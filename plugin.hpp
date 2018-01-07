@@ -14,7 +14,8 @@ class Plugin : public IPlugin
 public:
   virtual void APIENTRY free ();
   virtual void APIENTRY print ();
-  void APIENTRY setPascalThis (void* thisPascal); 
+  Plugin ();
+  virtual ~Plugin ();
   
 private:
   void* thisPascal;

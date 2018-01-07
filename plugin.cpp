@@ -11,14 +11,18 @@ void APIENTRY Plugin::print ()
   IPlugin_print (thisPascal);
 }
 
-void APIENTRY Plugin::setPascalThis (void* thisPascal)
+Plugin::Plugin ()
 {
-  this -> thisPascal = thisPascal;
+  thisPascal = IPlugin_getNewPlugin ();
+}
+
+Plugin::~Plugin ()
+{
+
 }
 
 extern "C" IPlugin* APIENTRY getNewPlugin ()
 {
   Plugin* plugin = new Plugin ();
-  plugin -> setPascalThis (IPlugin_getNewPlugin ());
   return plugin;
 }
