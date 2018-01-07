@@ -1,9 +1,11 @@
 #include "plugin.hpp"
 #include "pascalunit.hpp"
+#include <iostream>
 
 void APIENTRY Plugin::free ()
 {
   IPlugin_release (thisPascal);
+  delete this;
 }
 
 void APIENTRY Plugin::print ()
@@ -13,12 +15,13 @@ void APIENTRY Plugin::print ()
 
 Plugin::Plugin ()
 {
+  std::cout << "Plugin::Plugin" << std::endl;
   thisPascal = IPlugin_getNewPlugin ();
 }
 
 Plugin::~Plugin ()
 {
-
+  std::cout << "Plugin::~Plugin" << std::endl;
 }
 
 extern "C" IPlugin* APIENTRY getNewPlugin ()
