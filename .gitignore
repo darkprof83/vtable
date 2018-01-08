@@ -4,3 +4,11 @@ vtable
 
 *.ppu
 
+link.res
+ppas.sh
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+
+Makefile
+
