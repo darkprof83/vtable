@@ -1,39 +1,40 @@
 library pascalunit;
 {$MODE OBJFPC}
+{$include ApiEntry.inc}
 
 uses
   ctypes;
   
 type
   IPlugin = interface
-    procedure _release (); cdecl;
-    procedure print (); cdecl;
+    procedure _release (); APIENTRY;
+    procedure print (); APIENTRY;
   end;
   TPlugin = class (TInterfacedObject, IPlugin)
   public
-    procedure _release (); cdecl;
-    procedure print (); cdecl;
+    procedure _release (); APIENTRY;
+    procedure print (); APIENTRY;
     constructor Create ();
     destructor Free ();
   end;
   PPlugin = ^TPlugin;
 
-procedure TPlugin._release (); cdecl; 
+procedure TPlugin._release (); APIENTRY; 
 begin
   Free;
 end;
 
-procedure TPlugin.print (); cdecl; 
+procedure TPlugin.print (); APIENTRY; 
 begin
   writeln ('Hello World');
 end;
 
-procedure _release (this: PPlugin); cdecl;
+procedure _release (this: PPlugin); APIENTRY;
 begin
   this^._release ();
 end;
 
-procedure print (this: PPlugin); cdecl; 
+procedure print (this: PPlugin); APIENTRY; 
 begin
   this^.print ();
 end;
@@ -49,7 +50,7 @@ begin
   writeln ('TPlugin.Free');
 end;
 
-function  getNewPlugin (): PPlugin; cdecl;
+function  getNewPlugin (): PPlugin; APIENTRY;
 var
   plugin: PPlugin;
 begin

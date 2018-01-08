@@ -2,10 +2,15 @@
 
 #include "ApiEntry.hpp"
 
-class IPlugin
+class IBasePlugin
 {
 public:
   virtual void APIENTRY free () = 0;
+};
+
+class IPlugin : public IBasePlugin
+{
+public:
   virtual void APIENTRY print () = 0;
 };
 
