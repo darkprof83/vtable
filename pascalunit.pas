@@ -6,8 +6,10 @@ uses
   ctypes;
   
 type
-  IPlugin = interface
+  IBasePlugin = interface
     procedure _release (); APIENTRY;
+  end;
+  IPlugin = interface (IBasePlugin)
     procedure print (); APIENTRY;
   end;
   TPlugin = class (TInterfacedObject, IPlugin)
