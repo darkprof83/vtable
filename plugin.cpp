@@ -4,7 +4,7 @@
 
 void APIENTRY Plugin::free ()
 {
-  IPlugin_release (thisPascal);
+  // do not add code to this function
   delete this;
 }
 
@@ -21,9 +21,12 @@ Plugin::Plugin ()
 
 Plugin::~Plugin ()
 {
+  IPlugin_release (thisPascal);
   std::cout << "Plugin::~Plugin" << std::endl;
 }
 
+// use the free () method to remove this plugin in your system code or better use smart pointers
+// plugin1.reset ((IPlugin*)::getNewPlugin (), std::mem_fn ( &IPlugin::free ));
 extern "C" IPlugin* APIENTRY getNewPlugin ()
 {
   Plugin* plugin = new Plugin ();

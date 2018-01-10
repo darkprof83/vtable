@@ -26,4 +26,6 @@ private:
   void* thisPascal;
 };
 
+// use the free () method to remove this plugin in your system code or better use smart pointers
+// plugin1.reset ((IPlugin*)::getNewPlugin (), std::mem_fn ( &IPlugin::free ));
 extern "C" IPlugin* APIENTRY getNewPlugin ();
