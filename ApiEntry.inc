@@ -1,0 +1,6 @@
+{$MACRO ON}
+{$IFDEF MSWINDOWS}
+{$DEFINE APIENTRY:=stdcall}
+{$ELSE}
+{$DEFINE APIENTRY:=cdecl}
+{$ENDIF}
